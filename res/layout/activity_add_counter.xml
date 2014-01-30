@@ -6,7 +6,7 @@
     tools:context=".AddCounter" >
 
     <EditText
-        android:id="@+id/edit_message"
+        android:id="@+id/new_counter_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -15,6 +15,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add" />
+        android:text="@string/add"
+        android:onClick="addCounter" />
 
 </LinearLayout>

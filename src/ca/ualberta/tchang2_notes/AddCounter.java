@@ -1,20 +1,27 @@
 package ca.ualberta.tchang2_notes;
 
-import android.os.Bundle;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.view.View;
+import android.widget.EditText;
 
 public class AddCounter extends Activity {
-
+	private static final String LIST_OF_COUNTERS = "list.sav";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_counter);
-	
 		setupActionBar();
 	}
 
@@ -50,6 +57,32 @@ public class AddCounter extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	public void addCounter (View view){
+		EditText editText = (EditText) findViewById(R.id.new_counter_name);
+		String Counter_Name = editText.getText().toString() + "\n";
+		String Filename = Counter_Name + ".sav";
+		
+		//Attempt to save the counter
+		try{
+			//Create a new .sav file for the counter
+			FileOutputStream foscreate = openFileOutput(Filename,Context.MODE_APPEND);
+			foscreate.write("".getBytes());
+			foscreate.close();
+			
+			//Add it to the list of counters
+			FileOutputStream foslist = openFileOutput(LIST_OF_COUNTERS,Context.MODE_APPEND);
+			foslist.write(Counter_Name.getBytes());
+			foslist.close();
+			
+		}catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finish();
 	}
 
 }
