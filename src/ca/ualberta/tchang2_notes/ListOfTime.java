@@ -14,6 +14,7 @@ public class ListOfTime {
 		this.list = new ArrayList<Date>();
 	}
 
+	//Getters and setters below
 	public String getName() {
 		return name;
 	}

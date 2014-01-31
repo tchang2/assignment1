@@ -67,7 +67,7 @@ public class AddCounter extends Activity {
 			check.write("".getBytes());															//Write nothing
 			check.close();																		//Close our output stream
 
-			System.out.println("Check has completed!");
+			System.out.println("Check has completed!");											//For LogCat
 			
 			//Attempt to read from old list of counters
 			FileInputStream fis = openFileInput(LIST_OF_COUNTERS);								//Open a file input stream, load in our old list
@@ -75,7 +75,7 @@ public class AddCounter extends Activity {
 			Gson jsontoobject = new Gson();
 			ListOfCounters templist = jsontoobject.fromJson(br, ListOfCounters.class);			//Extract our new list of counters
 
-			System.out.println("Read from old list success!");
+			System.out.println("Read from old list success!");									//For LogCat
 			
 			//Attempt to save the counter
 			//Create a new .sav file for the counter
@@ -86,13 +86,12 @@ public class AddCounter extends Activity {
 			foscreate.write(empty.toJson(emptylist).getBytes());								//Convert the empty array into JSON format and write to file
 			foscreate.close();																	//Close our output stream
 
-			System.out.println("New save file for " + Filename + " created!");
+			System.out.println("New save file for " + Filename + " created!");					//For LogCat
 
 			//Add it to the list of counters
 			//Now write in a new list
 			FileOutputStream foslist = openFileOutput(LIST_OF_COUNTERS,Context.MODE_PRIVATE);	//Open a file output stream, overwriting existing list
 			templist.addList(counter_name);														//Add the counter to the list
-			System.out.println("HEY WE ADDED!");
 			Gson objecttojson = new Gson();														//Convert our list into JSON
 			foslist.write(objecttojson.toJson(templist).getBytes());							//Write it into a file
 			foslist.close();																	//Close our output stream

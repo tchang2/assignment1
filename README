@@ -22,10 +22,10 @@ limitations under the License.
 
 What is working
 ===============
-The file storage is fully implemented
+File storage is fully working
 
 
 What is not working
 ===================
 The counter is not implemented yet
-T
+The statistics is not implemented yet

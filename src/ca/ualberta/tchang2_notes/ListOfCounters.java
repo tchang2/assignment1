@@ -6,6 +6,7 @@ public class ListOfCounters {
 	
 	private ArrayList<String> list; 
 	
+	//Getters and Setters below
 	public ListOfCounters(){
 		this.list = new ArrayList<String>();
 	}
