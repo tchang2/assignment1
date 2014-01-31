@@ -23,9 +23,13 @@ limitations under the License.
 What is working
 ===============
 File storage is fully working
+Upon adding a counter the following things happen:
+- list.sav, which contains an Object in JSON format is updated with the new counter
+- <counter name>.save, file is created. It conatins an Object in JSON format.
+These files are created in preperation for counter storage
 
 
 What is not working
 ===================
 The counter is not implemented yet
-The statistics is not implemented yet
+Statistics of the counters is not implemented yet
